@@ -1,6 +1,7 @@
 require_relative "customer"
 require_relative "time_frame"
 require_relative "bike"
+require_relative "Rental"
 
 class BikeRentingWorkflow
 
@@ -37,9 +38,10 @@ class BikeRentingWorkflow
 
 		rental_bike = Bike.new(1, bike_model, 50)
 
-		puts "You've selected a bike rental for #{first_name} #{last_name}"
-		puts "Rental of model #{bike_model}"
-		puts "Starts on #{start_date} at #{start_time} and ends on #{end_date} at #{end_time}"
+		rental = Rental.new(customer, rental_time, rental_bike)
+
+		puts "Rental information:"
+		puts rental.to_s
 		puts "Confirm rental, y or n?"
 		confirm = gets.chomp
 
