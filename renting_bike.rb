@@ -1,4 +1,4 @@
-require "renting_bike_workflow"
+require_relative "renting_bike_workflow"
 
 bike_rental_workflow = BikeRentingWorkflow.new
 
