@@ -5,7 +5,7 @@ class Rental
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
 
-  attr_accessor :bike, :customer, :time_frame
+  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late
   
   def initialize(bike, customer, time_frame)
     @bike = bike
@@ -20,19 +20,23 @@ class Rental
     self.customer.to_s
   end
 
-  def late_fee(time_frame)
-    if self.time_frame.get_time_diff() > ACCEPTABLE_MINUTES_LATE
+  def calculate_late_fee(returned_time)
+    if self.rental_time_exceeded?(returned_time)
       self.is_late = true
       self.late_fee = STANDARD_LATE_FEE
-      self.reduce_late_fee
+      self.reduce_late_fee()
     end
+    self.late_fee
+  end
+
+  def rental_time_exceeded?(returned_time)
+    self.time_frame.get_time_diff(returned_time) >= ACCEPTABLE_MINUTES_LATE
   end
 
   def reduce_late_fee()
-    if called_if_late
+    if self.called_if_late
       self.late_fee = REDUCED_LATE_FEE
     end
   end
 
 end
-

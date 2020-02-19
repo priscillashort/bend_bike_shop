@@ -10,25 +10,24 @@ class TimeFrame
   end  
 
   def get_time_diff(actual_return_time)
-      self.time_to_minutes(actual_return_time) - self.get_time_diff(self.end_time)
+      self.time_to_minutes(actual_return_time) - self.time_to_minutes(self.end_time)
   end  
 
   def convert_to_miltary(time)
-      hours,minutes = time.split(':')
+      hours,minutes_and_ampm = time.split(':')
       hours = hours.to_i
-      am_or_pm = minutes[/\D+/].upcase
       hours -= 12 if hours == 12
-      hours += 12 if am_or_pm == "PM"
-      return hours,minutes[/\d+/].to_i
+      hours += 12 if minutes_and_ampm[/\w+/].upcase == "PM"
+      "#{hours}:#{minutes_and_ampm[/\d+/]}"
   end  
 
   def time_to_minutes(time)
-      hours,minutes = convert_to_miltary(time) 
+      hours,minutes = convert_to_miltary(time).split(':').map{|t|t.to_i}
       hours*60 + minutes
   end
 
 end
 
 
-# main
-# puts TimeFrame.new(1,1,1,1).time_to_minutes("12:15PM")
+# tests
+# puts TimeFrame.new(1,1,1,"3:45PM").get_time_diff("9:00pm")
