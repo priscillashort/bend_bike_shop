@@ -10,7 +10,7 @@ class TimeFrame
   end  
 
   def get_time_diff(actual_return_time)
-      self.time_to_minutes(actual_return_time - self.end_time)
+      self.time_to_minutes(actual_return_time) - self.get_time_diff(self.end_time)
   end  
 
   def convert_to_miltary(time)
@@ -21,7 +21,7 @@ class TimeFrame
       hours += 12 if am_or_pm == "PM"
       return hours,minutes[/\d+/].to_i
   end  
-  
+
   def time_to_minutes(time)
       hours,minutes = convert_to_miltary(time) 
       hours*60 + minutes
