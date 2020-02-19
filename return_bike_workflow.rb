@@ -24,5 +24,8 @@ rentals = [
 
 puts "Which rental would you like to return?"
 rentals.each.with_index{|r,i|puts "#{i}.#{r}"}
+print "select rental numb:"
 rental = rentals[gets().to_i]
-puts rental
+puts "you have selected #{rental}"
+puts "What time did they return it?"
+print "Enter time:"
