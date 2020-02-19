@@ -43,6 +43,12 @@ class BikeRentingWorkflow
 		puts "Confirm rental, y or n?"
 		confirm = gets.chomp
 
+		if confirm == 'y'
+			puts "Rental confirmed"
+		else
+			puts "Rental cancelled"
+		end
+
 	end
 
 end
