@@ -1,4 +1,3 @@
-require "time_frame"
 
 class Rental
   
@@ -15,6 +14,10 @@ class Rental
     @late_fee = 0
     @is_late = false
     @called_if_late = false
+  end
+
+  def to_s
+    self.customer.to_s
   end
 
   def late_fee(time_frame)
