@@ -24,7 +24,7 @@ class Rental
     if self.rental_time_exceeded?(returned_time)
       self.is_late = true
       self.late_fee = STANDARD_LATE_FEE
-      self.reduce_late_fee()
+      self.reduce_late_fee
     end
     self.late_fee
   end
@@ -33,10 +33,18 @@ class Rental
     self.time_frame.get_time_diff(returned_time) >= ACCEPTABLE_MINUTES_LATE
   end
 
-  def reduce_late_fee()
+  def reduce_late_fee
     if self.called_if_late
       self.late_fee = REDUCED_LATE_FEE
     end
+  end
+
+  def payment_info
+    self.customer.card_numb
+  end
+
+  def charge_customer
+    # does something with payment_info and late fee
   end
 
 end

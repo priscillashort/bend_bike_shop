@@ -1,6 +1,6 @@
 class Customer  
  
-  attr_reader :first_name,:last_name,:email
+  attr_reader :first_name,:last_name,:email,:card_numb,:phone_numb
 
   def initialize(first_name,last_name,email,phone_numb,card_numb)
     @first_name = first_name
