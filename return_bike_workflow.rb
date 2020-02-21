@@ -35,7 +35,7 @@ class ReturnBikeWorkFlow
     rental = self.rentals[gets().to_i]
     puts "you have selected #{rental}"
     puts "What time did they return it?"
-    print "Enter time:"
+    print "Enter time (ex: 3:45PM, 8:15AM): "
     rental.calculate_late_fee(gets)
     puts "#{rental.customer} has $#{rental.late_fee} in late fees"
     rental.charge_customer
@@ -43,3 +43,6 @@ class ReturnBikeWorkFlow
   end
 
 end
+
+workflow = ReturnBikeWorkFlow.new()
+workflow.run()
