@@ -38,6 +38,8 @@ class ReturnBikeWorkFlow
     print "Enter time (ex: 3:45PM, 8:15AM): "
     rental.calculate_late_fee(gets)
     puts "#{rental.customer} has $#{rental.late_fee} in late fees"
+    print "Enter a description of the condition of the bike(s): "
+    condition_description = gets
     rental.charge_customer
     puts "#{rental.customer}'s was charged on card with number: #{rental.payment_info}"
   end
