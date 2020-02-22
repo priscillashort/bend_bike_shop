@@ -43,6 +43,10 @@ class Rental
     self.customer.card_numb
   end
 
+  def total
+    self.bike.price + self.late_fee
+  end
+
   def charge_customer
     # does something with payment_info and late fee
   end
