@@ -31,3 +31,4 @@ end
 
 # tests
 # puts TimeFrame.new(1,1,1,"3:45PM").get_time_diff("9:00pm")
+

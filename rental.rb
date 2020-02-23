@@ -17,7 +17,9 @@ class Rental
   end
 
   def to_s
-    self.customer.to_s
+    "Customer: #{self.customer.to_s}
+  Rental model: #{bike.model} 
+  Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}"
   end
 
   def calculate_late_fee(returned_time)
