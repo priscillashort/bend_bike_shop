@@ -30,11 +30,13 @@ class CancelBikeWorkFlow
 
   def run
     puts "Which rental would you like to cancel?"
-    self.rentals.each.with_index{|r,i|puts "#{i}.#{r}"}
+    self.rentals.each.with_index{|r,i|puts "#{r}"}
 
-  	print "select rental numb:"
-  	rental = self.rentals[gets().to_i]
-  	puts "you have selected #{rental} #{rental.confirmation_code}"
+  	print "select confirmation code:"
+		conf_code = gets().to_i
+		rental = self.rentals.select{|r|r.confirmation_code == conf_code}.first
+		
+  	puts "you have selected #{rental}"
 
   	puts "Are you sure you want to cancel this rental?"
 		puts "Confirm cancelation, y or n?"
