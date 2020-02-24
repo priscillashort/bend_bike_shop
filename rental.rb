@@ -4,13 +4,15 @@ class Rental
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
+  @@current_id = 1
 
-  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late
+  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
   
   def initialize(bike, customer, time_frame)
     @bike = bike
     @customer = customer
     @time_frame = time_frame
+    @confirmation_code = (@@current_id += 1) 
     @late_fee = 0
     @is_late = false
     @called_if_late = false
