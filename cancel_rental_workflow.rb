@@ -34,7 +34,7 @@ class CancelBikeWorkFlow
 
   	print "select rental numb:"
   	rental = self.rentals[gets().to_i]
-  	puts "you have selected #{rental}"
+  	puts "you have selected #{rental} #{rental.confirmation_code}"
 
   	puts "Are you sure you want to cancel this rental?"
 		puts "Confirm cancelation, y or n?"

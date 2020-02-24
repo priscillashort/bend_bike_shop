@@ -4,8 +4,9 @@ class Rental
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
+  @@current_id = 0
 
-  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late
+  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
   
   def initialize(bike, customer, time_frame)
     @bike = bike
@@ -14,12 +15,14 @@ class Rental
     @late_fee = 0
     @is_late = false
     @called_if_late = false
+    @confirmation_code = @@current_id += 1
   end
 
   def to_s
     "Customer: #{self.customer.to_s}
   Rental model: #{bike.model} 
-  Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}"
+  Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
+  Confirmation code: #{confirmation_code}"
   end
 
   def calculate_late_fee(returned_time)
