@@ -29,12 +29,15 @@ class CancelBikeWorkFlow
 		confirm = gets.chomp
 
 		if confirm == 'y'
-    	puts "Cancelation confirmed"
+      puts "Cancelation confirmed"
+      rental_database.remove_rental!(rental.confirmation_code)
 		else
     	puts "Cancelation cancelled"
     end
     
     #Should remove the rental from the list of rentals
+    puts "\n remaining rentals:"
+    puts rental_database.rentals
 
   end
 
