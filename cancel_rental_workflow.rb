@@ -34,7 +34,6 @@ class CancelBikeWorkFlow
     	puts "Cancelation cancelled"
     end
     
-    #Should remove the rental from the list of rentals
     puts "\nremaining rentals:"
     puts rental_database.rentals
 

@@ -4,7 +4,9 @@ class Rental
   
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
-  ACCEPTABLE_MINUTES_LATE = 30
+  ACCEPTABLE_MINUTES_LATE = 30#Should remove the rental from the list of rentals
+  CURRENT_DATE = Date.today.strftime("%m/%d/%y")
+  CURRENT_TIME = Time.now.strftime("%I:%M%p")
   @@current_id = 0
 
   attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
@@ -40,15 +42,15 @@ class Rental
   end
 
   def past_start_time?
-    self.time_frame.get_start_time_diff(Time.now.strftime("%I:%M%p")) > 0
+    self.time_frame.get_start_time_diff(CURRENT_TIME) > 0
   end
 
   def past_start_date?
-    time_frame.get_start_date_diff(Date.today.strftime("%m/%d/%y")) > 0 
+    time_frame.get_start_date_diff(CURRENT_DATE) > 0 
   end
 
   def on_start_date?
-    time_frame.get_start_date_diff(Date.today.strftime("%m/%d/%y")) == 0
+    time_frame.get_start_date_diff(CURRENT_DATE) == 0
   end
 
   def reduce_late_fee
