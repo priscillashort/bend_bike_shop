@@ -35,4 +35,6 @@ class RentalDatabase
 		@rentals.select{|r| r.cancelable}
 	end
 
+	#create function to remove a canceled rental
+
 end

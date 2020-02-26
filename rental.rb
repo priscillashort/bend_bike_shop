@@ -40,11 +40,12 @@ class Rental
 
   def past_start_time?
     time = Time.now
-    self.time_frame.get_start_time_diff(time.strftime("%I:%M%p")) < 0
+    self.time_frame.get_start_time_diff(time.strftime("%I:%M%p")) > 0
   end
 
   def past_start_date?
     time = Date.now
+    false
     #Check if we are past the rental date
     #self.time_frame.get_start_time_diff(time.strftime("%I:%M%p")) < 0
   end
@@ -68,7 +69,8 @@ class Rental
   end
 
   def cancelable
-    past_start_time?
+    true
+    #(not past_start_time?) and (not past_start_date?)
   end
 
 end
