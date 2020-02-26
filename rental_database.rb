@@ -29,6 +29,9 @@ class RentalDatabase
 		)
 	end
 
+	def get_rental(conf_code)
+		rentals.each{|r| return r if r.confirmation_code==conf_code}
+	end
 
 	def cancelable_rentals
 		rentals.select{|r| r.cancelable?}

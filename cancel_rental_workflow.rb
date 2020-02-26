@@ -19,8 +19,7 @@ class CancelBikeWorkFlow
     self.rental_database.cancelable_rentals.each{|r|puts "#{r}"}
 
   	print "select confirmation code:"
-		conf_code = gets().to_i
-		rental = self.rental_database.rentals.select{|r|r.confirmation_code == conf_code}.first
+		rental = rental_database.get_rental(gets().to_i)
 		
     puts "you have selected #{rental}"
 
