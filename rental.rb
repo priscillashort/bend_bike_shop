@@ -37,21 +37,10 @@ class Rental
     self.late_fee
   end
 
-  def rental_time_exceeded?(returned_time)
-    self.time_frame.get_end_time_diff(returned_time) >= ACCEPTABLE_MINUTES_LATE
+  def rental_datetime_exceeded?(returned_date, returned_time)
+    self.time_frame.get_end_datetime_diff(returned_date,returned_time) >= ACCEPTABLE_MINUTES_LATE
   end
 
-  def past_start_time?
-    self.time_frame.get_start_time_diff(CURRENT_TIME) > 0
-  end
-
-  def past_start_date?
-    time_frame.get_start_date_diff(CURRENT_DATE) > 0 
-  end
-
-  def on_start_date?
-    time_frame.get_start_date_diff(CURRENT_DATE) == 0
-  end
 
   def reduce_late_fee
     if self.called_if_late
@@ -72,8 +61,7 @@ class Rental
   end
 
   def cancelable?
-    return (not past_start_time?) if on_start_date?
-    not past_start_date?
+    self.time_frame.get_start_datetime_diff(CURRENT_DATE,CURRENT_TIME) < 0
   end
 
 end

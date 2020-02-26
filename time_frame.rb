@@ -9,12 +9,22 @@ class TimeFrame
       @end_time = end_time
   end  
 
+  def get_start_datetime_diff(compare_date,compare_time)
+    hours_to_min(days_to_hours(get_start_date_diff(compare_date))) + get_start_time_diff(compare_time)
+  end
+
+  def get_end_datetime_diff(compare_date,compare_time)
+    hours_to_min(days_to_hours(get_end_date_diff(compare_date))) + get_end_time_diff(compare_time)
+  end
+
+  private 
+
   def get_end_time_diff(compare_time)
-      self.time_to_minutes(compare_time) - self.time_to_minutes(self.end_time)
+    time_to_minutes(compare_time) - time_to_minutes(end_time)
   end  
 
   def get_start_time_diff(compare_time)
-    self.time_to_minutes(compare_time) - self.time_to_minutes(self.start_time)
+    time_to_minutes(compare_time) - time_to_minutes(start_time)
   end
 
   def get_start_date_diff(compare_date)
@@ -31,7 +41,7 @@ class TimeFrame
 
   def time_to_minutes(time)
     hours,minutes = convert_to_miltary(time).split(':').map{|t|t.to_i}
-    hours*60 + minutes
+    hours_to_min(hours) + minutes
   end
 
   def convert_to_miltary(time)
@@ -44,6 +54,14 @@ class TimeFrame
 
   def to_date_obj(date_str)
     Date.strptime(date_str,"%m/%d/%y")
+  end
+
+  def days_to_hours(days)
+    24*days
+  end
+
+  def hours_to_min(hours)
+    60*hours
   end
 
 end
