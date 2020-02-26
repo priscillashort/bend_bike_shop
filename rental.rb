@@ -56,4 +56,8 @@ class Rental
     # does something with payment_info and late fee
   end
 
+  def change_customer_info(new_info)
+    self.customer.change_info(new_info)
+  end
+
 end
