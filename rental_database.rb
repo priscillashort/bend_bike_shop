@@ -1,3 +1,7 @@
+require_relative "bike"
+require_relative "customer"
+require_relative "rental"
+require_relative "time_frame"
 
 class RentalDatabase
 

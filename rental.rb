@@ -4,7 +4,7 @@ class Rental
   
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
-  ACCEPTABLE_MINUTES_LATE = 30#Should remove the rental from the list of rentals
+  ACCEPTABLE_MINUTES_LATE = 30
   CURRENT_DATE = Date.today.strftime("%m/%d/%y")
   CURRENT_TIME = Time.now.strftime("%I:%M%p")
   @@current_id = 0
@@ -28,8 +28,8 @@ class Rental
   Confirmation code: #{confirmation_code}"
   end
 
-  def calculate_late_fee(returned_time)
-    if self.rental_time_exceeded?(returned_time)
+  def calculate_late_fee(return_date, returned_time)
+    if self.rental_datetime_exceeded?(return_date,returned_time)
       self.is_late = true
       self.late_fee = STANDARD_LATE_FEE
       self.reduce_late_fee
