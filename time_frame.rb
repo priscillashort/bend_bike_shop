@@ -9,15 +9,19 @@ class TimeFrame
       @end_time = end_time
   end  
 
-  def get_time_diff(actual_return_time)
-      self.time_to_minutes(actual_return_time) - self.time_to_minutes(self.end_time)
+  def get_end_time_diff(compare_time)
+      self.time_to_minutes(compare_time) - self.time_to_minutes(self.end_time)
   end  
+
+	def get_start_time_diff(compare_time)
+    self.time_to_minutes(compare_time) - self.time_to_minutes(self.start_time)
+	end 
 
   def convert_to_miltary(time)
       hours,minutes_and_ampm = time.split(':')
       hours = hours.to_i
       hours -= 12 if hours == 12
-      hours += 12 if minutes_and_ampm[/\w+/].upcase == "PM"
+      hours += 12 if minutes_and_ampm[/[a-zA-Z]+/].upcase == "PM"
       "#{hours}:#{minutes_and_ampm[/\d+/]}"
   end  
 
@@ -28,7 +32,4 @@ class TimeFrame
 
 end
 
-
-# tests
-# puts TimeFrame.new(1,1,1,"3:45PM").get_time_diff("9:00pm")
 

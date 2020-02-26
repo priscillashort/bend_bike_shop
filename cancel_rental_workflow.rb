@@ -30,13 +30,17 @@ class CancelBikeWorkFlow
 
   def run
     puts "Which rental would you like to cancel?"
+
+    #Should only display cancelable rentals
     self.rentals.each.with_index{|r,i|puts "#{r}"}
 
   	print "select confirmation code:"
 		conf_code = gets().to_i
 		rental = self.rentals.select{|r|r.confirmation_code == conf_code}.first
 		
-  	puts "you have selected #{rental}"
+    puts "you have selected #{rental}"
+
+    puts "Cancelable: #{rental.cancelable}"
 
   	puts "Are you sure you want to cancel this rental?"
 		puts "Confirm cancelation, y or n?"
@@ -46,7 +50,9 @@ class CancelBikeWorkFlow
     	puts "Cancelation confirmed"
 		else
     	puts "Cancelation cancelled"
-		end
+    end
+    
+    #Should remove the rental from the list of rentals
 
   end
 

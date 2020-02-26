@@ -35,7 +35,18 @@ class Rental
   end
 
   def rental_time_exceeded?(returned_time)
-    self.time_frame.get_time_diff(returned_time) >= ACCEPTABLE_MINUTES_LATE
+    self.time_frame.get_end_time_diff(returned_time) >= ACCEPTABLE_MINUTES_LATE
+  end
+
+  def past_start_time?
+    time = Time.now
+    self.time_frame.get_start_time_diff(time.strftime("%I:%M%p")) < 0
+  end
+
+  def past_start_date?
+    time = Date.now
+    #Check if we are past the rental date
+    #self.time_frame.get_start_time_diff(time.strftime("%I:%M%p")) < 0
   end
 
   def reduce_late_fee
@@ -54,6 +65,10 @@ class Rental
 
   def charge_customer
     # does something with payment_info and late fee
+  end
+
+  def cancelable
+    past_start_time?
   end
 
 end
