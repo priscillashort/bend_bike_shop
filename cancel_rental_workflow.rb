@@ -2,41 +2,25 @@ require_relative "bike"
 require_relative "customer"
 require_relative "rental"
 require_relative "time_frame"
+require_relative "rental_database"
 
 
 class CancelBikeWorkFlow
   
-  attr_accessor :rentals
+  attr_accessor :rentals, :rental_database
 
-  def initialize
-    @rentals = [
-      Rental.new(
-        Bike.new(5,:mountain),
-        Customer.new("Joe","Shmow","JoeTheShmow@fake.com",1234567890,555444333),
-        TimeFrame.new("02/18/20","02/18/20","11:30AM","3:45PM")
-      ),
-      Rental.new(
-        Bike.new(10,:road),
-        Customer.new("Moe","Shmow","MoeTheShmow@fake.com",1234567890,555444333),
-        TimeFrame.new("02/18/20","02/20/20","1:00AM","10:30AM")
-      ),
-      Rental.new(
-        Bike.new(15,:tricycle),
-        Customer.new("Poe","Shmow","PoeTheShmow@fake.com",1234567890,555444333),
-        TimeFrame.new("02/18/20","02/19/20","12:15PM","4:00PM")
-      )
-    ]
+  def initialize(rental_database)
+    @rental_database = rental_database
   end
 
   def run
     puts "Which rental would you like to cancel?"
 
-    #Should only display cancelable rentals
-    self.rentals.each.with_index{|r,i|puts "#{r}"}
+    self.rental_database.cancelable_rentals.each.with_index{|r,i|puts "#{r}"}
 
   	print "select confirmation code:"
 		conf_code = gets().to_i
-		rental = self.rentals.select{|r|r.confirmation_code == conf_code}.first
+		rental = self.rental_database.all_rentals.select{|r|r.confirmation_code == conf_code}.first
 		
     puts "you have selected #{rental}"
 
