@@ -5,8 +5,6 @@ class Rental
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
-  CURRENT_DATE = Date.today.strftime("%m/%d/%y")
-  CURRENT_TIME = Time.now.strftime("%I:%M%p")
   @@current_id = 0
 
   attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
@@ -61,7 +59,7 @@ class Rental
   end
 
   def cancelable?
-    self.time_frame.get_start_datetime_diff(CURRENT_DATE,CURRENT_TIME) < 0
+    self.time_frame.get_current_vs_start_datetime_diff < 0
   end
 
 end

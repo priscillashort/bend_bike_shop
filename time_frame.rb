@@ -1,6 +1,10 @@
 class TimeFrame
+    
 
-  attr_reader :start_time, :end_time, :start_date, :end_date  
+  CURRENT_DATE = Date.today.strftime("%m/%d/%y")
+  CURRENT_TIME = Time.now.strftime("%I:%M%p")
+
+  attr_reader :start_time, :end_time, :start_date, :end_date
 
   def initialize(start_date,end_date,start_time,end_time)
       @start_date = start_date
@@ -9,6 +13,14 @@ class TimeFrame
       @end_time = end_time
   end  
 
+  def get_current_vs_start_datetime_diff
+    get_start_datetime_diff(CURRENT_DATE,CURRENT_TIME)
+  end
+
+  def get_current_vs_end_datetime_diff
+    get_end_datetime_diff(CURRENT_DATE,CURRENT_TIME)
+  end
+
   def get_start_datetime_diff(compare_date,compare_time)
     hours_to_min(days_to_hours(get_start_date_diff(compare_date))) + get_start_time_diff(compare_time)
   end
@@ -16,6 +28,7 @@ class TimeFrame
   def get_end_datetime_diff(compare_date,compare_time)
     hours_to_min(days_to_hours(get_end_date_diff(compare_date))) + get_end_time_diff(compare_time)
   end
+
 
   private 
 
