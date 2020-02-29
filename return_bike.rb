@@ -1,4 +1,8 @@
-require_relative 'return_bike_workflow'
+require_relative "return_bike_workflow"
+require_relative "rental_database"
 
-workflow = ReturnBikeWorkFlow.new()
+rental_database = RentalDatabase.fake
+
+workflow = ReturnBikeWorkFlow.new(rental_database)
+
 workflow.run
