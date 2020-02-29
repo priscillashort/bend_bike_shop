@@ -10,7 +10,7 @@ class ChangingRentalWorkflow
 	end
 
 	def run
-		rental = self.rental.change_rental_info(self.new_info)
+		rental.change_rental_info(new_info)
 	end
 
 end

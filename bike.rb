@@ -25,6 +25,7 @@ class Bike
 
   def change_info(new_info)
     @model = new_info[:model] if new_info.key?(:model)
+    return self
   end
     
 end

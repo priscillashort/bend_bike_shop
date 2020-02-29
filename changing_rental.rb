@@ -14,7 +14,7 @@ Rental.new(  Bike.new(15,:tricycle), Customer.new("Poe","Shmow","PoeTheShmow@fak
 puts "Enter Confirmation Code: "
 confirmation_code = gets.to_i
 
-rental_match = bikes[confirmation_code]
+rental_match = bikes[confirmation_code - 1]
 
 puts "Rental information: "
 puts rental_match.to_s
@@ -113,12 +113,8 @@ begin
 
 end while info_to_change != 4
 
-puts new_info.inspect
-
 changing_rental_workflow = ChangingRentalWorkflow.new(rental_match, new_info)
 
 rental = changing_rental_workflow.run
-
-
 
 puts rental.to_s

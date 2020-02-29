@@ -22,6 +22,7 @@ class Customer
     @last_name = new_info[:last_name] if new_info.key?(:last_name)
     @email= new_info[:email] if new_info.key?(:email)
     @phone_numb = new_info[:phone_numb] if new_info.key?(:phone_numb)
+    return self
   end
 
 end
