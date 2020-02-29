@@ -58,9 +58,9 @@ class Rental
   end
 
   def change_rental_info(new_info)
-    self.customer.change_info(new_info)
-    self.bike.change_info(new_info)
-    self.time_frame.change_info(new_info)
+    @customer = self.customer.change_info(new_info)
+    @bike = self.bike.change_info(new_info)
+    @time_frame = self.time_frame.change_info(new_info)
   end
 
 end

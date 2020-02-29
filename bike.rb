@@ -25,7 +25,6 @@ class Bike
 
   def change_info(new_info)
     @model = new_info[:model] if new_info.key?(:model)
-    @weight = @weight_for_each_model[@model]
   end
     
 end

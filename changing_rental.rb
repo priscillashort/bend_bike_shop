@@ -29,7 +29,7 @@ begin
   
   new_info = {}
   
-  info_to_change = (gets.chomp).to_i
+  info_to_change = gets.to_i
   
   
   if info_to_change != 4
@@ -39,7 +39,7 @@ begin
       puts "1: First Name"
       puts "2: Last Name"
       puts "3: Email Address"
-      customer_info_to_change = (gets.chomp).to_i
+      customer_info_to_change = gets.to_i
     
       case customer_info_to_change  
       when 1
@@ -60,7 +60,7 @@ begin
       puts "1: Mountain Bike"
       puts "2: Road Bike"
       puts "3: Tricycle"
-      bike_info_to_change = (gets.chomp).to_i
+      bike_info_to_change = gets.to_i
     
       case bike_info_to_change
       when 1
@@ -82,7 +82,7 @@ begin
       puts "2: End Date"
       puts "3: Start Time"
       puts "4: End Time"
-      time_frame_info_to_change = (gets.chomp).to_i
+      time_frame_info_to_change = gets.to_i
     
       case time_frame_info_to_change
       when 1
@@ -111,8 +111,12 @@ begin
 
 end while info_to_change != 4
 
-changing_rental = ChangingRentalWorkflow.new(rental_match, new_info)
+puts new_info.inspect
 
-rental_match = changing_rental.run
+changing_rental_workflow = ChangingRentalWorkflow.new(rental_match, new_info)
 
-puts rental_match.to_s
+rental = changing_rental_workflow.run
+
+
+
+puts rental.to_s
