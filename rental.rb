@@ -6,7 +6,7 @@ class Rental
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
 
-  @@current_id = 1
+  @@current_id = 0
 
 
   attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code

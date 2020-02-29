@@ -28,6 +28,14 @@ class TimeFrame
   def get_end_datetime_diff(compare_date,compare_time)
     hours_to_min(days_to_hours(get_end_date_diff(compare_date))) + get_end_time_diff(compare_time)
   end
+  
+  def change_info(new_info)
+    @start_date = new_info[:start_date] if new_info.key?(:start_date)
+    @end_date = new_info[:end_date] if new_info.key?(:end_date)
+    @start_time = new_info[:start_time] if new_info.key?(:start_time)
+    @end_time = new_info[:end_time] if new_info.key?(:end_time)
+    return self
+  end
 
 
   private 
@@ -64,16 +72,6 @@ class TimeFrame
     hours += 12 if minutes_and_ampm[/[a-zA-Z]+/].upcase == "PM"
     "#{hours}:#{minutes_and_ampm[/\d+/]}"
   end 
-
-  def change_info(new_info)
-    @start_date = new_info[:start_date] if new_info.key?(:start_date)
-    @end_date = new_info[:end_date] if new_info.key?(:end_date)
-    @start_time = new_info[:start_time] if new_info.key?(:start_time)
-    @end_time = new_info[:end_time] if new_info.key?(:end_time)
-    return self
-  end
-
-end
 
   def to_date_obj(date_str)
     Date.strptime(date_str,"%m/%d/%y")
