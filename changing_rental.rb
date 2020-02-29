@@ -111,5 +111,8 @@ begin
 
 end while info_to_change != 4
 
-rental_match.change_rental_info(new_info)
+changing_rental = ChangingRentalWorkflow.new(rental_match, new_info)
+
+rental_match = changing_rental.run
+
 puts rental_match.to_s
