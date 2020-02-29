@@ -20,9 +20,10 @@ class Rental
 
   def to_s
     "Customer: #{self.customer.to_s}
-  Rental model: #{bike.model} 
-  Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
-  Confirmation Code: #{self.confirmation_code}"
+    Rental model: #{self.bike.model} 
+    Rental times: Starts on #{self.time_frame.start_date} at #{self.time_frame.start_time}
+    and ends on #{self.time_frame.end_date} at #{self.time_frame.end_time}
+    Confirmation Code: #{self.confirmation_code}"
   end
 
   def calculate_late_fee(returned_time)
@@ -59,6 +60,7 @@ class Rental
   def change_rental_info(new_info)
     self.customer.change_info(new_info)
     self.bike.change_info(new_info)
+    self.time_frame.change_info(new_info)
   end
 
 end

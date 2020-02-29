@@ -26,6 +26,13 @@ class TimeFrame
       hours*60 + minutes
   end
 
+  def change_info(new_info)
+    @start_date = new_info[:start_date] if new_info.key?(:start_date)
+    @end_date = new_info[:end_date] if new_info.key?(:end_date)
+    @start_time = new_info[:start_time] if new_info.key?(:start_time)
+    @end_time = new_info[:end_time] if new_info.key?(:end_time)
+  end
+
 end
 
 
