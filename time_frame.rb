@@ -65,6 +65,16 @@ class TimeFrame
     "#{hours}:#{minutes_and_ampm[/\d+/]}"
   end 
 
+  def change_info(new_info)
+    @start_date = new_info[:start_date] if new_info.key?(:start_date)
+    @end_date = new_info[:end_date] if new_info.key?(:end_date)
+    @start_time = new_info[:start_time] if new_info.key?(:start_time)
+    @end_time = new_info[:end_time] if new_info.key?(:end_time)
+    return self
+  end
+
+end
+
   def to_date_obj(date_str)
     Date.strptime(date_str,"%m/%d/%y")
   end

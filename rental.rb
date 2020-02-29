@@ -5,7 +5,11 @@ class Rental
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
+<<<<<<< HEAD
   @@current_id = 0
+=======
+  @@current_id = 1
+>>>>>>> 04_change_rental
 
   attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
   
@@ -13,6 +17,7 @@ class Rental
     @bike = bike
     @customer = customer
     @time_frame = time_frame
+    @confirmation_code = (@@current_id += 1) 
     @late_fee = 0
     @is_late = false
     @called_if_late = false
@@ -21,9 +26,9 @@ class Rental
 
   def to_s
     "Customer: #{self.customer.to_s}
-  Rental model: #{bike.model} 
-  Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
-  Confirmation code: #{confirmation_code}"
+    Rental model: #{bike.model} 
+    Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
+    Confirmation code: #{confirmation_code}"
   end
 
   def calculate_late_fee(return_date, returned_time)
@@ -58,8 +63,16 @@ class Rental
     # does something with payment_info and late fee
   end
 
+<<<<<<< HEAD
   def cancelable?
     self.time_frame.get_current_vs_start_datetime_diff < 0
+=======
+  def change_rental_info(new_info)
+    @customer = self.customer.change_info(new_info)
+    @bike = self.bike.change_info(new_info)
+    @time_frame = self.time_frame.change_info(new_info)
+    return self
+>>>>>>> 04_change_rental
   end
 
 end
