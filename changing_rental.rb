@@ -21,86 +21,95 @@ puts rental_match.to_s
 
 puts "How would you like to change your rental?"
 
-puts "1: Change Customer Information"
-puts "2: Change Bike Information"
-puts "3: Change Time Information"
-info_to_change = (gets.chomp).to_i
-
-new_info = {}
-
-case info_to_change
-when 1
-  puts "What Would You Like to Change: "
-  puts "1: First Name"
-  puts "2: Last Name"
-  puts "3: Email Address"
-  customer_info_to_change = (gets.chomp).to_i
-
-  case customer_info_to_change  
-  when 1
-    puts "Enter New First Name: "
-    new_info[:first_name] = gets.chomp
-  when 2
-    puts "Enter New Last Name: "
-    new_info[:last_name] = gets.chomp
-  when 3
-    puts "Enter New Email Address: "
-    new_info[:email] = gets.chomp
-  else
-    puts "Option Not Available"
-  end
-
-when 2
-  puts "What Bike Model Would You Like to Rent?"
-  puts "1: Mountain Bike"
-  puts "2: Road Bike"
-  puts "3: Tricycle"
-  bike_info_to_change = (gets.chomp).to_i
-
-  case bike_info_to_change
-  when 1
-    new_info[:model] = :mountain
-    puts "Bike Model Updated to Mountain Bike!"
-  when 2
-    new_info[:model] = :road
-    puts "Bike Model Updated to Road Bike!"
-  when 3
-    new_info[:model] = :tricycle
-    puts "Bike Model Updated to Tricycle Bike!"
-  else
-    puts "Option Not Available"
-  end
-
-when 3
-  puts "What Scheduling Information Would You Like To Change:"
-  puts "1: Start Date"
-  puts "2: End Date"
-  puts "3: Start Time"
-  puts "4: End Time"
-  time_frame_info_to_change = (gets.chomp).to_i
-
-  case time_frame_info_to_change
-  when 1
-    puts "Enter New Start Date (XX/XX/XX): "
-    new_info[:start_date] = gets.chomp
-  when 2
-    puts "Enter New End Date (XX/XX/XX): "
-    new_info[:end_date] = gets.chomp
-  when 3
-    puts "Enter New Start Time (XX:XXAM or XX:XXPM): "
-    new_info[:start_time] = gets.chomp
-  when 4
-    puts "Enter New End Time (XX:XXAM or XX:XXPM): "
-    new_info[:end_time] = gets.chomp
-  else
-    puts "Option Not Available"
-
-  end
+begin
+  puts "1: Change Customer Information"
+  puts "2: Change Bike Information"
+  puts "3: Change Time Information"
+  puts "4: Finished"
   
-else
-  puts "Option Not Available"
+  new_info = {}
+  
+  info_to_change = (gets.chomp).to_i
+  
+  
+  if info_to_change != 4
+    case info_to_change
+    when 1
+      puts "What Would You Like to Change: "
+      puts "1: First Name"
+      puts "2: Last Name"
+      puts "3: Email Address"
+      customer_info_to_change = (gets.chomp).to_i
+    
+      case customer_info_to_change  
+      when 1
+        puts "Enter New First Name: "
+        new_info[:first_name] = gets.chomp
+      when 2
+        puts "Enter New Last Name: "
+        new_info[:last_name] = gets.chomp
+      when 3
+        puts "Enter New Email Address: "
+        new_info[:email] = gets.chomp
+      else
+        puts "Option Not Available"
+      end
+    
+    when 2
+      puts "What Bike Model Would You Like to Rent?"
+      puts "1: Mountain Bike"
+      puts "2: Road Bike"
+      puts "3: Tricycle"
+      bike_info_to_change = (gets.chomp).to_i
+    
+      case bike_info_to_change
+      when 1
+        new_info[:model] = :mountain
+        puts "Bike Model Updated to Mountain Bike!"
+      when 2
+        new_info[:model] = :road
+        puts "Bike Model Updated to Road Bike!"
+      when 3
+        new_info[:model] = :tricycle
+        puts "Bike Model Updated to Tricycle Bike!"
+      else
+        puts "Option Not Available"
+      end
+    
+    when 3
+      puts "What Scheduling Information Would You Like To Change:"
+      puts "1: Start Date"
+      puts "2: End Date"
+      puts "3: Start Time"
+      puts "4: End Time"
+      time_frame_info_to_change = (gets.chomp).to_i
+    
+      case time_frame_info_to_change
+      when 1
+        puts "Enter New Start Date (XX/XX/XX): "
+        new_info[:start_date] = gets.chomp
+      when 2
+        puts "Enter New End Date (XX/XX/XX): "
+        new_info[:end_date] = gets.chomp
+      when 3
+        puts "Enter New Start Time (XX:XXAM or XX:XXPM): "
+        new_info[:start_time] = gets.chomp
+      when 4
+        puts "Enter New End Time (XX:XXAM or XX:XXPM): "
+        new_info[:end_time] = gets.chomp
+      else
+        puts "Option Not Available"
+    
+      end
+      
+    else
+      puts "Option Not Available"
+    
+    end
+  
+  end
 
-end
+end while info_to_change != 4
 
 rental_match.change_rental_info(new_info)
 puts rental_match.to_s
