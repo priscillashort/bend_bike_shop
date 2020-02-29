@@ -22,8 +22,8 @@ puts rental_match.to_s
 puts "How would you like to change your rental?"
 
 puts "1: Change Customer Information"
-#puts "2: Change Bike Information"
-#puts "3: Change Time Information"
+puts "2: Change Bike Information"
+puts "3: Change Time Information"
 info_to_change = (gets.chomp).to_i
 
 new_info = {}
@@ -49,9 +49,32 @@ when 1
   else
     puts "Option Not Available"
   end
+
+when 2
+  puts "What Bike Model Would You Like to Rent?"
+  puts "1: Mountain Bike"
+  puts "2: Road Bike"
+  puts "3: Tricycle"
+  bike_info_to_change = (gets.chomp).to_i
+
+  case bike_info_to_change
+  when 1
+    new_info[:model] = :mountain
+    puts "Bike Model Updated to Mountain Bike!"
+  when 2
+    new_info[:model] = :road
+    puts "Bike Model Updated to Road Bike!"
+  when 3
+    new_info[:model] = :tricycle
+    puts "Bike Model Updated to Tricycle Bike!"
+  else
+    puts "Option Not Available"
+  end
+
 else
   puts "Option Not Available"
+
 end
 
-rental_match.change_customer_info(new_info)
+rental_match.change_rental_info(new_info)
 puts rental_match.to_s
