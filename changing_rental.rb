@@ -21,13 +21,15 @@ puts rental_match.to_s
 
 puts "How would you like to change your rental?"
 
+new_info = {}
+
 begin
   puts "1: Change Customer Information"
   puts "2: Change Bike Information"
   puts "3: Change Time Information"
   puts "4: Finished"
   
-  new_info = {}
+
   
   info_to_change = gets.to_i
   
