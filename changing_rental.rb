@@ -23,7 +23,7 @@ puts "How would you like to change your rental?"
 
 puts "1: Change Customer Information"
 puts "2: Change Bike Information"
-puts "3: Change Time Information"
+#puts "3: Change Time Information"
 info_to_change = (gets.chomp).to_i
 
 new_info = {}
