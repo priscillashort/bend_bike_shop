@@ -16,10 +16,12 @@ class Customer
   end
 
   def change_info(new_info)
-    self.first_name = new_info[:first_name] if new_info[:first_name] != nil
-    self.last_name = new_info[:last_name] if new_info[:last_name] != nil
-    self.email= new_info[:email] if new_info[:email] != nil
-    self.phone_numb = new_info[:phone_numb] if new_info[:phone_numb] != nil
+    #this feels like their should be a better way to assign all these
+    #but i can't think of one right now
+    @first_name = new_info[:first_name] if new_info.key?(:first_name)
+    @last_name = new_info[:last_name] if new_info.key?(:last_name)
+    @email= new_info[:email] if new_info.key?(:email)
+    @phone_numb = new_info[:phone_numb] if new_info.key?(:phone_numb)
   end
-    
+
 end
