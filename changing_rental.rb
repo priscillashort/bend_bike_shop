@@ -54,4 +54,4 @@ else
 end
 
 rental_match.change_customer_info(new_info)
-puts barental_match.to_s
+puts rental_match.to_s
