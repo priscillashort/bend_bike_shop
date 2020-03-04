@@ -9,10 +9,10 @@ class Rental
   @@current_id = 0
 
 
-  attr_accessor :bike, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
+  attr_accessor :rentable, :customer, :time_frame, :late_fee,:called_if_late,:is_late, :confirmation_code
   
-  def initialize(bike, customer, time_frame)
-    @bike = bike
+  def initialize(rentable, customer, time_frame)
+    @rentable = rentable
     @customer = customer
     @time_frame = time_frame
     @confirmation_code = (@@current_id += 1) 
@@ -24,7 +24,7 @@ class Rental
 
   def to_s
     "Customer: #{self.customer.to_s}
-    Rental model: #{bike.model} 
+    Rental model: #{rentable.model} 
     Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
     Confirmation code: #{confirmation_code}"
   end
@@ -54,7 +54,7 @@ class Rental
   end
 
   def total
-    self.bike.price + self.late_fee
+    self.rentable.price + self.late_fee
   end
 
   def charge_customer
@@ -68,7 +68,7 @@ class Rental
 
   def change_rental_info(new_info)
     @customer = self.customer.change_info(new_info)
-    @bike = self.bike.change_info(new_info)
+    @rentable = self.rentable.change_info(new_info)
     @time_frame = self.time_frame.change_info(new_info)
     return self
   end
