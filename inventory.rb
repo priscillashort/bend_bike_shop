@@ -15,4 +15,8 @@ class Inventory
       if item.model == model
         items.delete(item)
         return item
+      end
+    end
+  end
+  
 end
