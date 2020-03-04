@@ -1,5 +1,5 @@
 
-class ReturnBikeWorkFlow
+class ReturnRentalWorkFlow
   
   attr_accessor :rental_db
 
