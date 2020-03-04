@@ -1,3 +1,6 @@
+require_relative 'bike'
+require_relative 'kayak'
+
 class Inventory 
 
   attr_reader :items
@@ -6,11 +9,23 @@ class Inventory
     @items = items
   end
 
+  def self.fake
+    Inventory.new(
+      [
+        Bike.new(10,:road),
+        Bike.new(12,:mountain),
+        Bike.new(5,:mountain),
+        Kayak.new(12,:flatwater),
+        Kayak.new(20,:whitewater)
+      ]
+    )
+  end
+
   def add_item(item)
     items << item
   end
 
-  def get_item_from_inventory(model):
+  def get_item_from_inventory(model)
     items.each do |item|
       if item.model == model
         items.delete(item)
@@ -18,5 +33,5 @@ class Inventory
       end
     end
   end
-  
+
 end
