@@ -1,6 +1,5 @@
 require_relative "rental_database"
 
-
 class CancelBikeWorkFlow
   
   attr_accessor :rentals, :rental_database

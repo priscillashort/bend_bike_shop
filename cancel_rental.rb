@@ -3,7 +3,7 @@ require_relative "rental_database"
 
 rental_database = RentalDatabase.fake
 
-cancel_rental_workflow = CancelBikeWorkFlow.new(rental_database)
+cancel_rental_workflow = CancelRentalWorkFlow.new(rental_database)
 
 puts "Which rental would you like to cancel?"
 puts rental_database.rentals
