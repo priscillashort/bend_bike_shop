@@ -46,4 +46,8 @@ class Rental
     return self
   end
 
+  def late_fee(called_if_late)
+    LateFee(self.time_frame, called_if_late).late_fee
+  end
+
 end
