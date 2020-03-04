@@ -8,16 +8,15 @@ class AddRentableToInventoryWorkflow
 
   def run
     puts "Enter what kind of item you want to add:\nBike\nKayak"
-    rentable_type = gets
+    rentable_type = gets.downcase.strip
     puts "enter the model:"
-    if rentable_type.downcase.strip == 'bike'
-      inventory.add_item(Bike.new(3,gets))
-    elsif rentable_type.downcase.strip == 'kayak'
-      inventory.add_item(Kayak.new(6,gets))
+    if rentable_type == 'bike'
+      inventory.add_item(Bike.new(3,gets.strip))
+    elsif rentable_type == 'kayak'
+      inventory.add_item(Kayak.new(6,gets.strip))
     else
       puts "invaild item type!"
     end
-    puts inventory.items
   end
 
 end

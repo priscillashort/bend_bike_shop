@@ -9,6 +9,10 @@ class Inventory
     @items = items
   end
 
+  def to_s 
+    "Inventory with items: #{items.map{|i|i.to_s}}"
+  end
+
   def self.fake
     Inventory.new(
       [

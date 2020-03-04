@@ -16,5 +16,9 @@ module Rentable
 	def weight_for_each_model
 		raise NotImplementedError, "The #{self.class} class should implement: weight_for_each_model"
 	end
+
+	def to_s
+		"#{self.class} with model #{model}"
+	end
       
 end
