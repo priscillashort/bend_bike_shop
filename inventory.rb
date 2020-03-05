@@ -36,6 +36,7 @@ class Inventory
         return item
       end
     end
+    puts "model is not avaible"
   end
 
 end

@@ -52,7 +52,11 @@ class RentalDatabase
       )
     	]
 		)
-	end
+  end
+  
+  def add_rental(rental)
+    rentals << rental
+  end
 
 
 	def get_rental(conf_code)
