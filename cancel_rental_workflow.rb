@@ -3,10 +3,11 @@ require_relative "rental_database"
 
 class CancelBikeWorkFlow
   
-  attr_accessor :rentals, :rental_database
+  attr_accessor :inventory, :rental_database
 
-  def initialize(rental_database)
+  def initialize(rental_database,inventory)
     @rental_database = rental_database
+    @inventory = inventory
   end
 
   def run
@@ -25,6 +26,7 @@ class CancelBikeWorkFlow
 
 		if confirm == 'y'
       puts "Cancelation confirmed"
+      inventory.add_item(rental.rentable)
       rental_database.remove_rental!(rental.confirmation_code)
 		else
     	puts "Cancelation cancelled"
