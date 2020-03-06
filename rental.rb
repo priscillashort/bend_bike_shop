@@ -15,7 +15,6 @@ class Rental
     @rentable = rentable
     @customer = customer
     @time_frame = time_frame
-    @confirmation_code = (@@current_id += 1) 
     @late_fee = 0
     @is_late = false
     @called_if_late = false

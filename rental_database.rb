@@ -67,8 +67,9 @@ class RentalDatabase
 		rentals.select{|r| r.cancelable?}
 	end
 
-	def remove_rental!(conf_code)
+  def remove_rental!(conf_code)
 		rentals.reject!{|r|r.confirmation_code == conf_code}
-	end
+  end
+  
 
 end

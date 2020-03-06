@@ -1,10 +1,11 @@
 
 class ReturnBikeWorkFlow
   
-  attr_accessor :rental_db
+  attr_accessor :rental_db, :inventory
 
-  def initialize(rental_db)
+  def initialize(rental_db,inventory)
     @rental_db = rental_db
+    @inventory = inventory
   end
 
   def run
@@ -29,7 +30,7 @@ class ReturnBikeWorkFlow
     puts "\nTotal price: #{rental.rentable.price}"
     puts "Including $#{rental.late_fee} in late fees" if rental.is_late
     puts "#{rental.customer}'s was charged on card with number: #{rental.payment_info}"
-
+    inventory.add_item(rental.rentable)
     rental_db.remove_rental!(rental.confirmation_code)
 
   end
