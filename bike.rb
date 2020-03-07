@@ -3,27 +3,18 @@ require_relative "rentable"
 class Bike 
   include Rentable
 
-  attr_reader :weight, :model
+  attr_reader :model
   
-  def initialize(weight,model)
-    @weight = weight
+  def initialize(model)
     @model = model
   end
   
-  def price_for_each_model
-    {
-      mountain: 20,
-      road: 15,
-      tricycle: 25
-    }
-  end
+  #def price
+	#	raise NotImplementedError, "The #{self.class} class should implement: price"
+  #end
 
-  def weight_for_each_model
-    {
-      mountain: 10,
-      road: 7,
-      tricycle: 12
-    }
-  end
+  #def weight
+	#	raise NotImplementedError, "The #{self.class} class should implement: weight"
+  #end
 
 end
