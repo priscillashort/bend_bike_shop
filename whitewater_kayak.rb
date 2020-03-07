@@ -1,12 +1,8 @@
 require_relative "kayak"
 
 class WhitewaterKayak < Kayak
-  #attr_reader :model
 
-  #def initialize(weight, model)
-  #  @weight = weight
-  #  @model = model
-  #end
+  def initialize; end
   
   def price
     15
