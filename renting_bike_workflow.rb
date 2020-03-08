@@ -2,16 +2,21 @@ require_relative "rental"
 
 class BikeRentingWorkflow
 
-  attr_accessor :customer, :time_frame, :bike 
+  attr_accessor :customer, :time_frame, :rentable, :rental_database, :inventory
 
-	def initialize(customer, time_frame, bike)
-	    @customer = customer
-	    @time_frame = time_frame 
-	    @bike = bike
+	def initialize(customer, time_frame, rentable, rental_database, inventory)
+	  @customer = customer
+	  @time_frame = time_frame 
+		@rentable = rentable
+		@rental_database = rental_database
+		@inventory = inventory
 	end
 
 	def run
-	  rental = Rental.new(self.bike, self.customer, self.time_frame)
+		@rentable = inventory.get_item_from_inventory(self.rentable)
+		rental = Rental.new(self.rentable, self.customer, self.time_frame)
+		rental_database.add_rental(rental)
+		rental
 	end
-
+	
 end
