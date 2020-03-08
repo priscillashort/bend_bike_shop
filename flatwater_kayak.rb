@@ -12,4 +12,8 @@ class FlatwaterKayak < Kayak
     10
   end
 
+  def class_description
+    "Flatwater Kayak"
+  end
+
 end

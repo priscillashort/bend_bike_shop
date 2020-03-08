@@ -38,6 +38,8 @@ model_selection = gets.chomp
 selected_model_type = model_type(selected_rentable_type, model_selection)
 selected_model = model(selected_rentable_type, selected_model_type)
 
+puts "this is the class name: #{selected_model} - and class description: #{}"
+
 rentable = selected_model.new
 
 bike_rental_workflow = BikeRentingWorkflow.new(customer, rental_time, rentable)

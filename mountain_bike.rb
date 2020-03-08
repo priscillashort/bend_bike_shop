@@ -1,7 +1,7 @@
 require_relative "bike"
 
 class MountainBike < Bike
-  
+
   def initialize; end
   
   def price
@@ -10,6 +10,10 @@ class MountainBike < Bike
 
   def weight
     10
+  end
+
+  def class_description
+    "Mountain Bike"
   end
 
 end

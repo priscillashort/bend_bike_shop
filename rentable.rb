@@ -5,11 +5,15 @@ module Rentable
 	end
 		
 	def price
-		raise NotImplementedError, "The #{self.class} class should implement: price_for_each_model"
+		raise NotImplementedError, "The #{self.class} class should implement: price"
 	end
 
 	def weight
-		raise NotImplementedError, "The #{self.class} class should implement: weight_for_each_model"
+		raise NotImplementedError, "The #{self.class} class should implement: weight"
 	end
-      
+			
+	def class_description
+		raise NotImplementedError, "The #{self.class} class should implement: class_description"
+	end
+     
 end

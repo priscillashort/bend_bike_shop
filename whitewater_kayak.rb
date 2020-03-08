@@ -12,4 +12,8 @@ class WhitewaterKayak < Kayak
     7
   end
 
+  def class_description
+    "Whitewater Kayak"
+  end
+
 end
