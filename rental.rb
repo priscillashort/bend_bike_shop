@@ -45,11 +45,11 @@ class Rental
   end
 
   def late_fee(called_if_late)
-    LateFee(self.time_frame, called_if_late).amount
+    LateFee.new(self.time_frame, called_if_late).amount
   end
 
   def is_late
-    LateFee(self.time_frame).is_late
+    LateFee.new(self.time_frame).is_late
   end
 
 end
