@@ -12,7 +12,7 @@ class Customer
   end
 
   def to_s
-    "#{self.first_name} #{self.last_name} #{self.email}"
+    "#{self.first_name} #{self.last_name}"
   end
 
   def change_info(new_info)

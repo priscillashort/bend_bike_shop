@@ -2,6 +2,7 @@ require_relative "changing_rental_workflow"
 require_relative "rental"
 require_relative "customer"
 require_relative "time_frame"
+require_relative "rentable"
 require_relative "rental_database"
 require_relative "rental_selection"
 
@@ -25,7 +26,7 @@ new_info = {}
 
 begin
   puts "1: Change Customer Information"
-  puts "2: Change Rental Type Information"
+  puts "2: Change Bike or Kayak Information"
   puts "3: Change Time Information"
   puts "4: Finished"
   
@@ -68,6 +69,34 @@ begin
   
       new_info[:rentable] = selected_model.new
 
+      puts "What Bike or Kayak Model Would You Like to Rent?"
+      puts "1: Mountain Bike"
+      puts "2: Road Bike"
+      puts "3: Tricycle"
+      puts "4: Flatwater Kayak"
+      puts "5: Whitewater Kayak"
+      rentable_info_to_change = gets.to_i
+    
+      case rentable_info_to_change
+      when 1
+        new_info[:model] = :mountain
+        puts "Bike Model Updated to Mountain Bike!"
+      when 2
+        new_info[:model] = :road
+        puts "Bike Model Updated to Road Bike!"
+      when 3
+        new_info[:model] = :tricycle
+        puts "Bike Model Updated to Tricycle Bike!"
+      when 4
+        new_info[:model] = :flatwater
+        puts "Kayak Model Updated to Flatwater Kayak!"
+      when 5
+        new_info[:model] = :whitewater
+        puts "Kayak Model Updated to Whitewater Kayak!"
+      else
+        puts "Option Not Available"
+      end
+    
     when 3
       puts "What Scheduling Information Would You Like To Change:"
       puts "1: Start Date"

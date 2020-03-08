@@ -1,7 +1,7 @@
-require_relative "renting_bike_workflow"
+require_relative "renting_workflow"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "inventory"
+require_relative "rentable"require_relative "inventory"
 require_relative "rental_database"
 require_relative "rental_selection"
 
@@ -44,7 +44,7 @@ rentable = selected_model.new
 
 bike_rental_workflow = BikeRentingWorkflow.new(customer, rental_time, rentable, RentalDatabase.fake, Inventory.fake)
 
-rental = bike_rental_workflow.run
+rental = rental_workflow.run
 
 puts "Rental information:"
 puts rental.to_s
