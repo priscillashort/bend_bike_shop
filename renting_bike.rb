@@ -3,7 +3,7 @@ require_relative "customer"
 require_relative "time_frame"
 require_relative "model_config"
 
-include RentalType
+include RentalSelection
 
 puts "What is your first name? "
 first_name = gets.chomp
@@ -28,22 +28,17 @@ end_time = gets.chomp
 rental_time = TimeFrame.new(start_date, end_date, start_time, end_time)
 
 puts "What type of rental do you want?"
-	rentable_type_config.keys.each_with_index do |k, i|
-  puts "#{i + 1}. #{k}\n"
-end
-rental_type_slection = gets.chomp
-rentable_type = rentable_type_config.keys[rental_type_slection.to_i - 1]
-rentable_type_model_config = rentable_type_config[rentable_type]
+print_rentable_types
+rentable_selection = gets.chomp
+selected_rentable_type = rentable_type(rentable_selection)
 
-puts "What model of #{rentable_type} do you want?"
-rentable_type_model_config.keys.each_with_index do |k, i|
-  puts "#{i + 1}. #{k}\n"
-end
+puts "What model of #{selected_rentable_type} do you want?"
+print_model_types(selected_rentable_type)
 model_selection = gets.chomp
-model_type = rentable_type_model_config.keys[model_selection.to_i - 1]
-model = rentable_type_model_config[model_type]
+selected_model_type = model_type(selected_rentable_type, model_selection)
+selected_model = model(selected_rentable_type, selected_model_type)
 
-rentable = model.new
+rentable = selected_model.new
 
 bike_rental_workflow = BikeRentingWorkflow.new(customer, rental_time, rentable)
 
