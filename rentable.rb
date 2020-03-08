@@ -1,8 +1,7 @@
 module Rentable 
 
   def change_info(new_info)
-    self.model = new_info[:model] if new_info.key?(:model)
-    return self
+		return new_info[:rentable] if new_info.key?(:rentable) else self
 	end
 		
 	def price

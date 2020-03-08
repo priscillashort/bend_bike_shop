@@ -1,7 +1,7 @@
 require_relative "renting_bike_workflow"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "model_config"
+require_relative "rental_selection"
 
 include RentalSelection
 
