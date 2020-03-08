@@ -5,7 +5,7 @@ require_relative "inventory"
 rental_database = RentalDatabase.fake
 inventory = Inventory.fake
 
-cancel_rental_workflow = CancelRentalWorkFlow.new(rental_database)
+cancel_rental_workflow = CancelRentalWorkFlow.new(rental_database, inventory)
 
 puts "Which rental would you like to cancel?"
 puts rental_database.rentals

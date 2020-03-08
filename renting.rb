@@ -1,7 +1,8 @@
 require_relative "renting_workflow"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "rentable"require_relative "inventory"
+require_relative "rentable"
+require_relative "inventory"
 require_relative "rental_database"
 require_relative "rental_selection"
 
@@ -42,7 +43,7 @@ selected_model = model(selected_rentable_type, selected_model_type)
 
 rentable = selected_model.new
 
-bike_rental_workflow = BikeRentingWorkflow.new(customer, rental_time, rentable, RentalDatabase.fake, Inventory.fake)
+rental_workflow = RentingWorkflow.new(customer, rental_time, rentable, RentalDatabase.fake, Inventory.fake)
 
 rental = rental_workflow.run
 
