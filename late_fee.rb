@@ -39,4 +39,10 @@ class LateFee
 
 end
 
+class NilLateFee
+  def calculate_late_fee
+    raise "Late fee can not be calculated on NilLateFee object"
+  end
+end
+
 

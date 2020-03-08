@@ -12,7 +12,7 @@ class Rental
     @customer = customer
     @time_frame = time_frame
     @confirmation_code = (@@current_id += 1)
-    @late_fee = nil 
+    @late_fee = NilLateFee.new()
   end
 
   def to_s
