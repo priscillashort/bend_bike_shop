@@ -10,7 +10,7 @@ class LateFee
   def initialize(time_frame, called_if_late)
     @time_frame = time_frame
     @called_if_late = false
-    @late_fee = 0
+    @amount = 0
     @is_late = false
 
     calculate_late_fee(@time_frame.return_date, @time_frame.returned_time)
@@ -20,7 +20,7 @@ class LateFee
   def calculate_late_fee(return_date, returned_time)
     if self.rental_datetime_exceeded?(return_date,returned_time)
       self.is_late = true
-      self.late_fee = STANDARD_LATE_FEE
+      self.amount = STANDARD_LATE_FEE
       self.reduce_late_fee()
     end
   end
@@ -31,7 +31,7 @@ class LateFee
 
   def reduce_late_fee
     if self.called_if_late
-      self.late_fee = REDUCED_LATE_FEE
+      self.amount = REDUCED_LATE_FEE
     end
   end
 
