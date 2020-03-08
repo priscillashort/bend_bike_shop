@@ -1,5 +1,8 @@
-require_relative 'bike'
-require_relative 'kayak'
+require_relative 'road_bike'
+require_relative 'mountain_bike'
+require_relative 'tricycle'
+require_relative 'flatwater_kayak'
+require_relative 'whitewater_kayak'
 
 class Inventory 
 
@@ -16,11 +19,11 @@ class Inventory
   def self.fake
     Inventory.new(
       [
-        Bike.new(10,:road),
-        Bike.new(12,:mountain),
-        Bike.new(5,:mountain),
-        Kayak.new(12,:flatwater),
-        Kayak.new(20,:whitewater)
+        RoadBike.new,
+        MountainBike.new,
+        MountainBike.new,
+        FlatwaterKayak.new,
+        WhitewaterKayak.new
       ]
     )
   end
@@ -29,9 +32,9 @@ class Inventory
     items << item
   end
 
-  def get_item_from_inventory(model)
+  def get_item_from_inventory(rentable)
     items.each do |item|
-      if item.model == model
+      if item.class == rentable.class
         items.delete(item)
         return item
       end

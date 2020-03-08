@@ -2,24 +2,12 @@ require_relative "changing_rental_workflow"
 require_relative "rental"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "bike"
 require_relative "rental_database"
+require_relative "rental_selection"
 
-rentals = [
-  Rental.new(
-    Bike.new(5,:mountain), 
-    Customer.new("Joe","Shmow","JoeTheShmow@fake.com",1234567890,555444333),
-    TimeFrame.new("02/18/20","02/18/20","11:30AM","3:45PM")),
-  Rental.new(
-    Bike.new(10,:road), 
-    Customer.new("Moe","Shmow","MoeTheShmow@fake.com",1234567890,555444333),
-    TimeFrame.new("02/18/20","02/20/20","1:00AM","10:30AM")),
-  Rental.new(
-    Bike.new(15,:tricycle), 
-    Customer.new("Poe","Shmow","PoeTheShmow@fake.com",1234567890,555444333),
-    TimeFrame.new("02/18/20","02/19/20","12:15PM","4:00PM"))]
+include RentalSelection
 
-rental_db = RentalDatabase.new(rentals)
+rental_db = RentalDatabase.fake
 
 puts rental_db.rentals
 
@@ -37,14 +25,11 @@ new_info = {}
 
 begin
   puts "1: Change Customer Information"
-  puts "2: Change Bike Information"
+  puts "2: Change Rental Type Information"
   puts "3: Change Time Information"
   puts "4: Finished"
   
-
-  
   info_to_change = gets.to_i
-  
   
   if info_to_change != 4
     case info_to_change
@@ -70,26 +55,19 @@ begin
       end
     
     when 2
-      puts "What Bike Model Would You Like to Rent?"
-      puts "1: Mountain Bike"
-      puts "2: Road Bike"
-      puts "3: Tricycle"
-      bike_info_to_change = gets.to_i
-    
-      case bike_info_to_change
-      when 1
-        new_info[:model] = :mountain
-        puts "Bike Model Updated to Mountain Bike!"
-      when 2
-        new_info[:model] = :road
-        puts "Bike Model Updated to Road Bike!"
-      when 3
-        new_info[:model] = :tricycle
-        puts "Bike Model Updated to Tricycle Bike!"
-      else
-        puts "Option Not Available"
-      end
-    
+      puts "What type of rental do you want?"
+      print_rentable_types
+      rentable_selection = gets.chomp
+      selected_rentable_type = rentable_type(rentable_selection)
+  
+      puts "What model of #{selected_rentable_type} do you want?"
+      print_model_types(selected_rentable_type)
+      model_selection = gets.chomp
+      selected_model_type = model_type(selected_rentable_type, model_selection)
+      selected_model = model(selected_rentable_type, selected_model_type)
+  
+      new_info[:rentable] = selected_model.new
+
     when 3
       puts "What Scheduling Information Would You Like To Change:"
       puts "1: Start Date"

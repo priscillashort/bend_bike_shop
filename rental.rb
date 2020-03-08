@@ -23,7 +23,7 @@ class Rental
 
   def to_s
     "Customer: #{self.customer.to_s}
-    Rental model: #{rentable.model} 
+    Rental type: #{rentable.class_description} 
     Rental times: Starts on #{time_frame.start_date} at #{time_frame.start_time} and ends on #{time_frame.end_date} at #{time_frame.end_time}
     Confirmation code: #{confirmation_code}"
   end
