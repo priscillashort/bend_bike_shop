@@ -14,7 +14,6 @@ class LateFee
     @is_late = false
 
     calculate_late_fee(@time_frame.return_date, @time_frame.returned_time)
-
   end
 
   def calculate_late_fee(return_date, returned_time)
