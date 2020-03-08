@@ -1,4 +1,4 @@
-require_relative "rental_database"
+#require_relative "rental_database"
 
 class ReturnBikeWorkFlow
   

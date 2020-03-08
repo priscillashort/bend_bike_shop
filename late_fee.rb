@@ -1,4 +1,5 @@
 require_relative "rental"
+require_relative "time_frame"
 
 class LateFee
   STANDARD_LATE_FEE = 5
@@ -7,7 +8,7 @@ class LateFee
 
   attr_accessor :time_frame, :called_if_late, :late_fee, :is_late
 
-  def initialize(time_frame, called_if_late)
+  def initialize(time_frame, called_if_late=false)
     @time_frame = time_frame
     @called_if_late = false
     @amount = 0

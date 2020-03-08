@@ -1,4 +1,5 @@
 require 'date'
+require_relative "late_fee.rb"
 
 class Rental
   
@@ -45,6 +46,10 @@ class Rental
 
   def late_fee(called_if_late)
     LateFee(self.time_frame, called_if_late).amount
+  end
+
+  def is_late
+    LateFee(self.time_frame).is_late
   end
 
 end
