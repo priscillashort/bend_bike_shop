@@ -2,8 +2,7 @@ require_relative "changing_rental_workflow"
 require_relative "rental"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "bike"
-require_relative "kayak"
+require_relative "rentable"
 require_relative "rental_database"
 
 rentals = [

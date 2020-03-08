@@ -1,7 +1,7 @@
-require_relative "renting_bike_workflow"
+require_relative "renting_workflow"
 require_relative "customer"
 require_relative "time_frame"
-require_relative "bike"
+require_relative "rentable"
 
 puts "What is your first name? "
 first_name = gets.chomp
@@ -25,14 +25,14 @@ end_time = gets.chomp
 
 rental_time = TimeFrame.new(start_date, end_date, start_time, end_time)
 
-puts "What model of bike do you want?"
-bike_model = gets.chomp
+puts "What model of bike or kayak do you want?"
+rentable_model = gets.chomp
 
-rental_bike = Bike.new(50, bike_model)
+rental_model = Rentable.new(50, rentable_model)
 
-bike_rental_workflow = BikeRentingWorkflow.new(customer, rental_time, rental_bike)
+rental_workflow = RentingWorkflow.new(customer, rental_time, rental_model)
 
-rental = bike_rental_workflow.run
+rental = rental_workflow.run
 
 puts "Rental information:"
 puts rental.to_s
