@@ -19,9 +19,10 @@ class ReturnBikeWorkFlow
 
     puts "\nWhat time did they return it?"
     print "Enter time (ex: 3:45PM, 8:15AM): "
-    return_time = gets
+    returned_time = gets
     print "Enter date (ex: mm/dd/yy, 02/28/20): "
-    puts "\n#{rental.customer} has $#{rental.late_fee(false)} in late fees"
+    rental.create_late_fee(returned_time, gets.chomp)
+    puts "\n#{rental.customer} has $#{rental.late_fee} in late fees"
 
     print "\nEnter a description of the condition of the returned item(s): "
     condition_description = gets

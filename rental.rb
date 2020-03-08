@@ -11,7 +11,8 @@ class Rental
     @rentable = rentable
     @customer = customer
     @time_frame = time_frame
-    @confirmation_code = (@@current_id += 1) 
+    @confirmation_code = (@@current_id += 1)
+    @late_fee = nil 
   end
 
   def to_s
@@ -44,12 +45,16 @@ class Rental
     return self
   end
 
-  def late_fee(called_if_late)
-    LateFee.new(self.time_frame, called_if_late).amount
+  def create_late_fee(returned_time, returned_date, called_if_late=false)
+    @late_fee = LateFee.new(returned_time, returned_date, @time_frame, called_if_late)
+  end
+
+  def late_fee
+    @late_fee.amount
   end
 
   def is_late
-    LateFee.new(self.time_frame).is_late
+    @late_fee.is_late
   end
 
 end
