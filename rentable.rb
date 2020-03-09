@@ -1,13 +1,14 @@
 module Rentable 
 
   def change_info(new_info)
-		 if new_info.key?(:rentable)
-            new_info[:rentable]
-        else
-            self
-        end
-
-    end
+		#return new_info[:rentable] if new_info.key?(:rentable) else self
+		if new_info.key?(:rentable)
+			new_info[:rentable]
+		else
+			self
+		end
+		
+	end
 		
 	def price
 		raise NotImplementedError, "The #{self.class} class should implement: price"

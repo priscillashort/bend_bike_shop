@@ -8,7 +8,7 @@ class ReturnRentalWorkFlow
   end
 
   def run(date, return_time, rental)
-    rental.calculate_late_fee(date,return_time)
+    rental.create_late_fee(date,return_time)
     rental.charge_customer
     rental_db.remove_rental!(rental.confirmation_code)
 
