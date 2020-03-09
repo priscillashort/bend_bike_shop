@@ -1,6 +1,5 @@
 class TimeFrame
     
-
   CURRENT_DATE = Date.today.strftime("%m/%d/%y")
   CURRENT_TIME = Time.now.strftime("%I:%M%p")
 
@@ -36,7 +35,6 @@ class TimeFrame
     @end_time = new_info[:end_time] if new_info.key?(:end_time)
     return self
   end
-
 
   private 
 

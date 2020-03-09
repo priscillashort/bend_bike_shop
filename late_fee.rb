@@ -2,6 +2,7 @@ require_relative "rental"
 require_relative "time_frame"
 
 class LateFee
+
   STANDARD_LATE_FEE = 5
   REDUCED_LATE_FEE = 3
   ACCEPTABLE_MINUTES_LATE = 30
@@ -19,8 +20,8 @@ class LateFee
     calculate_late_fee(returned_date, returned_time)
   end
 
-  def calculate_late_fee(return_date, returned_time)
-    if rental_datetime_exceeded?(return_date,returned_time)
+  def calculate_late_fee(returned_date, returned_time)
+    if rental_datetime_exceeded?(returned_date,returned_time)
       @is_late = true
       @amount = STANDARD_LATE_FEE
       reduce_late_fee()
