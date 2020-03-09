@@ -30,6 +30,11 @@ end_time = gets.chomp
 
 rental_time = TimeFrame.new(start_date, end_date, start_time, end_time)
 
+inventory = Inventory.fake
+puts "Available Inventory:"
+puts inventory
+puts
+
 puts "What type of rental do you want?"
 print_rentable_types
 rentable_selection = gets.chomp
@@ -43,7 +48,7 @@ selected_model = model(selected_rentable_type, selected_model_type)
 
 rentable = selected_model.new
 
-rental_workflow = RentingWorkflow.new(customer, rental_time, rentable, RentalDatabase.fake, Inventory.fake)
+rental_workflow = RentingWorkflow.new(customer, rental_time, rentable, RentalDatabase.fake, inventory)
 
 rental = rental_workflow.run
 
